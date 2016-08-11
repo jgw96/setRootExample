@@ -12,8 +12,9 @@ export class LoginPage {
   }
 
   login(): void {
-      let rootNav = getRootNav(this.navCtrl);
+      /*let rootNav = getRootNav(this.navCtrl);
       rootNav.setRoot(HomePage);
-      rootNav.popToRoot();
+      rootNav.popToRoot();*/
+      this.navCtrl.setRoot(HomePage);
   }
 }
