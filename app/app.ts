@@ -1,9 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
-import {ionicBootstrap, Platform, Storage, LocalStorage, Nav} from 'ionic-angular';
+import {ionicBootstrap, Platform, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HomePage} from './pages/home/home';
 import {LoginPage} from './pages/login/login';
-import {provideForms, disableDeprecatedForms} from '@angular/forms';
 
 @Component({
   templateUrl: 'build/app.html'
@@ -11,9 +10,7 @@ import {provideForms, disableDeprecatedForms} from '@angular/forms';
 class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any;
-
-  local: Storage = new Storage(LocalStorage);
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -24,18 +21,6 @@ class MyApp {
     this.pages = [
       {title: 'Home', component: HomePage}
     ];
-
-    this.local.get('token')
-      .then(token => {
-        if(!token) {
-          this.rootPage = LoginPage;
-        } else {
-          this.rootPage = HomePage;
-        }
-      })
-      .catch(err => {
-        this.rootPage = LoginPage;
-      });
   }
 
   initializeApp() {
@@ -53,6 +38,4 @@ class MyApp {
   }
 }
 
-ionicBootstrap(MyApp,
-  disableDeprecatedForms(),
-  provideForms());
+ionicBootstrap(MyApp);

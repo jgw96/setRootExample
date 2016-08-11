@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
-import {NavController, Storage, LocalStorage} from 'ionic-angular';
+import {NavController} from 'ionic-angular';
 import {LoginPage} from '../login/login';
+import {getRootNav} from '../../utils/navUtils';
 
 @Component({
   templateUrl: 'build/pages/home/home.html',
 })
 export class HomePage {
 
-  local: Storage = new Storage(LocalStorage);
-
   constructor(private navCtrl: NavController) {
 
   }
 
   logout() {
-    this.local.remove('token');
-
-    this.navCtrl.setRoot(LoginPage);
-    this.navCtrl.popToRoot();
+    let rootNav = getRootNav(this.navCtrl);
+    rootNav.setRoot(LoginPage);
+    rootNav.popToRoot();
   }
 }

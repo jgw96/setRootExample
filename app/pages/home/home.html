@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Home</ion-title>
   </ion-navbar>
 
@@ -15,5 +18,9 @@
 
 <ion-content padding>
   <p>Hello World!</p>
+  <ion-item>
+    <ion-label floating>Message</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
   <button type="button" primary block (click)="logout()">Log Out</button>
 </ion-content>
